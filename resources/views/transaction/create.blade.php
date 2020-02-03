@@ -24,6 +24,7 @@
                             <div class="form-group">
                                 <label for="customer">Customer</label>
                                 <select id="customer" class="form-control" name="customer_id" id="">
+                                    <option value=""></option>
                                     @foreach ($customer as $item)
                                     <option value="{{ $item->id }}">{{ $item->name }}</option>
                                     @endforeach
@@ -141,6 +142,15 @@
         })
 
         $('#qty').on('keyup',() => {
+            let value = $('#qty').val();
+            let price = $('#price').val();
+            let total = value * price; 
+
+            $('#total').val(total);
+            
+        })
+
+        $('#qty').on('change',() => {
             let value = $('#qty').val();
             let price = $('#price').val();
             let total = value * price; 

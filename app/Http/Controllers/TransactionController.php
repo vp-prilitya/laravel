@@ -25,9 +25,11 @@ class TransactionController extends Controller
         
         foreach($transaction as $data){
             foreach($data->detail as $item){
-                $sum[$data->id][] = $item->total;
+                $total[$data->id][] = $item->total;
             }
         }
+
+        $sum = $total ?? 0; 
 
         return view('transaction.index', compact('transaction', 'sum'));
     }
